@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Validator Tools</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .card:hover {
+      transform: translateY(-5px);
+      transition: transform 0.3s ease;
+    }
+    .fade-in {
+      animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-indigo-900 to-black min-h-screen text-white flex flex-col items-center justify-center p-6">
+
+  <h1 class="text-4xl font-bold text-center mb-10 fade-in">🚀 Smart Validator Toolkit</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full fade-in">
+    <!-- SMS Spam Detector -->
+    <a href="/sms-check" class="card bg-purple-700/80 rounded-xl p-6 shadow-lg hover:shadow-2xl flex flex-col items-start">
+      <h2 class="text-2xl font-bold mb-2">📩 SMS Spam Detector</h2>
+      <p class="text-sm opacity-80">Paste any SMS message and instantly detect if it's spam or not.</p>
+    </a>
+
+    <!-- Email Validator -->
+    <a href="/email-check" class="card bg-blue-600/80 rounded-xl p-6 shadow-lg hover:shadow-2xl flex flex-col items-start">
+      <h2 class="text-2xl font-bold mb-2">📧 Email Validator</h2>
+      <p class="text-sm opacity-80">Check if an email address is real, valid, and properly formatted.</p>
+    </a>
+
+    <!-- Phone Number Checker -->
+    <a href="/phone-check" class="card bg-teal-600/80 rounded-xl p-6 shadow-lg hover:shadow-2xl flex flex-col items-start">
+      <h2 class="text-2xl font-bold mb-2">📱 Phone Number Checker</h2>
+      <p class="text-sm opacity-80">Validate phone number, detect carrier, country, and line type.</p>
+    </a>
+
+    <!-- URL Phishing Checker -->
+    <a href="/url-check" class="card bg-red-600/80 rounded-xl p-6 shadow-lg hover:shadow-2xl flex flex-col items-start">
+      <h2 class="text-2xl font-bold mb-2">🔗 URL Safety Checker</h2>
+      <p class="text-sm opacity-80">Check if a website link is malicious, suspicious or safe using VirusTotal.</p>
+    </a>
+  </div>
+
+  <footer class="mt-10 text-sm text-gray-400 fade-in">
+    Made with ❤️ by Arnab | Powered by Flask, APIs & ML Models
+  </footer>
+
+</body>
+</html>

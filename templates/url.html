@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>URL Safety Checker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-red-700 via-purple-900 to-black min-h-screen flex items-center justify-center text-white">
+
+  <div class="bg-white/10 backdrop-blur-xl p-8 rounded-2xl shadow-2xl max-w-lg w-full">
+    <h1 class="text-3xl font-bold mb-6 text-center">🔗 URL Safety Checker</h1>
+
+    <form method="POST" class="space-y-4" onsubmit="startLoading()">
+      <input 
+        type="url" 
+        name="url" 
+        placeholder="Paste a URL (e.g. https://example.com)" 
+        required
+        class="w-full p-4 rounded-lg bg-white/20 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-red-400" />
+
+      <button 
+        id="checkBtn"
+        type="submit" 
+        class="w-full bg-red-600 hover:bg-red-700 transition-all duration-300 py-3 rounded-lg font-semibold text-white shadow-lg flex items-center justify-center gap-2">
+        🛡️ <span id="btnText">Check URL</span>
+      </button>
+    </form>
+
+    {% if result %}
+      {% if result.error %}
+        <div class="mt-6 p-4 rounded-lg text-center text-xl font-bold bg-red-500">
+          ⚠️ {{ result.error }}
+        </div>
+      {% else %}
+        <div class="mt-6 bg-black/40 p-4 rounded-lg">
+          <p><strong>🟢 Harmless:</strong> {{ result.harmless }}</p>
+          <p><strong>🔴 Malicious:</strong> {{ result.malicious }}</p>
+          <p><strong>🟡 Suspicious:</strong> {{ result.suspicious }}</p>
+          <p><strong>⚪ Undetected:</strong> {{ result.undetected }}</p>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <script>
+    function startLoading() {
+      const btn = document.getElementById('checkBtn');
+      const btnText = document.getElementById('btnText');
+      btn.disabled = true;
+      btnText.innerHTML = 'Checking...';
+      btn.innerHTML = `<svg class="animate-spin h-5 w-5 text-white mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+      </svg> Checking...`;
+    }
+  </script>
+
+</body>
+</html>

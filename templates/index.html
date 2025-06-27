@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMS Spam Detector</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-purple-800 via-indigo-900 to-black min-h-screen flex items-center justify-center text-white">
+
+  <div class="bg-white/10 backdrop-blur-lg p-8 rounded-2xl shadow-2xl max-w-lg w-full fade-in">
+    <h1 class="text-3xl font-bold mb-6 text-center text-white">📩 SMS Spam Detector</h1>
+    
+    <form method="POST" class="space-y-4">
+      <textarea 
+        name="message" 
+        rows="4" 
+        class="w-full p-4 rounded-lg bg-white/20 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-purple-400"
+        placeholder="Paste your SMS here..."
+        required></textarea>
+      
+      <button 
+        type="submit" 
+        class="w-full bg-purple-600 hover:bg-purple-700 transition-all duration-300 py-3 rounded-lg font-semibold text-white shadow-lg">
+        🔍 Detect
+      </button>
+    </form>
+
+    {% if result %}
+      <div class="mt-6 p-4 rounded-lg text-center text-xl font-bold
+        {% if result == 'Spam 😡' %} bg-red-600 {% else %} bg-green-600 {% endif %}">
+        {{ result }}
+      </div>
+    {% endif %}
+  </div>
+
+</body>
+</html>
